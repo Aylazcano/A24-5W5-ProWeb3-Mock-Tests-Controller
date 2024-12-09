@@ -16,6 +16,9 @@ namespace mock.depart.Controllers
             _service = service;
         }
 
+        // *1 À faire si une action contient le code suivant User.FindFirstValue(ClaimTypes.NameIdentifier)
+        // Propriété virtuelle pour obtenir l'ID de l'utilisateur courant
+        // Cette propriété est virtuelle pour faciliter le mock lors des tests unitaires
         public virtual string UserId { get { return User.FindFirstValue(ClaimTypes.NameIdentifier)!; } }
 
 
@@ -24,7 +27,7 @@ namespace mock.depart.Controllers
         [HttpDelete("{id}")]
         public ActionResult<Cat> DeleteCat(int id)
         {
-            // UserId utilise une propriété pour pouvoir la "mock" facilement
+            // *1 UserId utilise une propriété pour pouvoir la "mock" facilement
             string? userid = UserId;
 
             // TODO vous devrez aussi faire un mock avec le service
